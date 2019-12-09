@@ -1,7 +1,7 @@
 <#--
 
     Solo - A small and beautiful blogging system written in Java.
-    Copyright (c) 2010-2019, b3log.org & hacpai.com
+    Copyright (c) 2010-present, b3log.org
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -17,13 +17,12 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -->
-<#include "macro-head.ftl">
+<#include "../../common-template/macro-common_head.ftl">
 <!DOCTYPE html>
 <html>
     <head>
         <@head title="${archiveLabel} - ${blogTitle}">
-        <meta name="keywords" content="${metaKeywords},${archiveLabel}"/>
-        <meta name="description" content="${metaDescription},${archiveLabel}"/>
+            <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/base.css?${staticResourceVersion}"/>
         </@head>
     </head>
     <body>
@@ -31,7 +30,7 @@
         <main class="main">
             <div class="wrapper">
             <div class="content page-archive">
-                <section class="posts-collapse">
+                <section class="posts-collapse posts-collapse--line">
                     <span class="archive-move-on"></span>
                     <span class="archive-page-counter">
                         ${ohLabel}..!  ${sumLabel} ${statistic.statisticPublishedBlogArticleCount} ${fightLabel}
@@ -40,7 +39,7 @@
                     <#list archiveDates as archiveDate>
                     <article>
                         <header class="post-header">
-                            <h1>
+                            <h2>
                                 <#if "en" == localeString?substring(0, 2)>
                                 <a class="post-title" href="${servePath}/archives/${archiveDate.archiveDateYear}/${archiveDate.archiveDateMonth}">
                                     ${archiveDate.monthName} ${archiveDate.archiveDateYear}(${archiveDate.archiveDatePublishedArticleCount})
@@ -50,7 +49,7 @@
                                     ${archiveDate.archiveDateYear} ${yearLabel} ${archiveDate.archiveDateMonth} ${monthLabel}(${archiveDate.archiveDatePublishedArticleCount})
                                 </a>
                                 </#if>
-                            </h1>
+                            </h2>
                         </header>
                     </article>
                     </#list>

@@ -1,7 +1,7 @@
 <#--
 
     Solo - A small and beautiful blogging system written in Java.
-    Copyright (c) 2010-2019, b3log.org & hacpai.com
+    Copyright (c) 2010-present, b3log.org
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -24,6 +24,9 @@
 </div>
 
 <aside class="sidebar">
+    <#if article?? && article.articleToC?? && article.articleToC?size &gt; 0>
+        <#include "../../common-template/toc.ftl"/>
+    <#else>
     <section>
         <img class="site-author-image" src="${adminUser.userAvatar}" title="${userName}"/>
         <p class="site-author-name">${userName}</p>
@@ -53,9 +56,17 @@
 
         <div class="feed-link">
             <a href="${servePath}/rss.xml" rel="alternate">
-                <i class="icon-rss"></i>
                 RSS
             </a>
+                <a href="${servePath}/dynamic.html" rel="section">
+                ${dynamicLabel}
+                </a>
+                <a href="${servePath}/tags.html" rel="section">
+                ${allTagsLabel}
+                </a>
+                <a href="${servePath}/archives.html">
+                ${archiveLabel}
+                </a>
         </div>
 
         <div class="links-of-author">
@@ -73,14 +84,8 @@
             </span>
             <#else>
             <span class="links-of-author-item">
-                <a href="${loginURL}">
-                    <i class="icon-login"></i> ${loginLabel}
-                </a>
-            </span>
-
-            <span class="links-of-author-item">
-                <a href="${servePath}/register">
-                    <i class="icon-register"></i> ${registerLabel}
+                <a href="${servePath}/start">
+                    ${startToUseLabel}
                 </a>
             </span>
             </#if> 
@@ -106,4 +111,5 @@
         </div>
         </#if>
     </section>
+    </#if>
 </aside>

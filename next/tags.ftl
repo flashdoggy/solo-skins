@@ -1,7 +1,7 @@
 <#--
 
     Solo - A small and beautiful blogging system written in Java.
-    Copyright (c) 2010-2019, b3log.org & hacpai.com
+    Copyright (c) 2010-present, b3log.org
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -17,13 +17,12 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -->
-<#include "macro-head.ftl">
+<#include "../../common-template/macro-common_head.ftl">
 <!DOCTYPE html>
 <html>
     <head>
         <@head title="${allTagsLabel} - ${blogTitle}">
-        <meta name="keywords" content="${metaKeywords},${allTagsLabel}"/>
-        <meta name="description" content="<#list tags as tag>${tag.tagTitle}<#if tag_has_next>,</#if></#list>"/>
+            <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/base.css?${staticResourceVersion}"/>
         </@head>
     </head>
     <body>
@@ -39,11 +38,11 @@
                     <#list mostUsedCategories as category>
                         <article>
                             <header class="post-header">
-                                <h1>
+                                <h2>
                                     <a class="post-title" href="${servePath}/category/${category.categoryURI}">
                                         ${category.categoryTitle} (${category.categoryTagCnt})</a>
                                     <small>${category.categoryDescription}</small>
-                                </h1>
+                                </h2>
                             </header>
                         </article>
                     </#list>

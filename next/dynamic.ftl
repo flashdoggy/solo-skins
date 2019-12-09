@@ -1,7 +1,7 @@
 <#--
 
     Solo - A small and beautiful blogging system written in Java.
-    Copyright (c) 2010-2019, b3log.org & hacpai.com
+    Copyright (c) 2010-present, b3log.org
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -17,13 +17,12 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -->
-<#include "macro-head.ftl">
+<#include "../../common-template/macro-common_head.ftl">
 <!DOCTYPE html>
 <html>
     <head>
-        <@head title="${blogTitle}">
-        <meta name="keywords" content="${metaKeywords},${dynamicLabel}"/>
-        <meta name="description" content="${metaDescription},${dynamicLabel}"/>
+        <@head title="${dynamicLabel} - ${blogTitle}">
+            <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/base.css?${staticResourceVersion}"/>
         </@head>
     </head>
     <body>
@@ -48,7 +47,7 @@
                                 </span>
                                 <a class="fn-right" href="${servePath}${comment.commentSharpURL}">${viewLabel}»</a>
                             </div>
-                            <div class="comment-content post-body article-body">
+                            <div class="comment-content post-body vditor-reset">
                                 ${comment.commentContent}
                             </div>
                         </div>
@@ -61,13 +60,5 @@
             </div>
         </main>
         <#include "footer.ftl">
-
-        <script>
-            var $commentContents = $(".comments .comment-content");
-            for (var i = 0; i < $commentContents.length; i++) {
-                var str = $commentContents[i].innerHTML;
-                $commentContents[i].innerHTML = Util.replaceEmString(str);
-            }
-        </script>
     </body>
 </html>

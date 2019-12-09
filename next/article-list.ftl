@@ -1,7 +1,7 @@
 <#--
 
     Solo - A small and beautiful blogging system written in Java.
-    Copyright (c) 2010-2019, b3log.org & hacpai.com
+    Copyright (c) 2010-present, b3log.org
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -19,67 +19,73 @@
 -->
 <section class="posts-expand">
     <#list articles as article>
-    <article class="post-item">
-        <header>
-            <h1>
-                <a class="post-title-link"  rel="bookmark" href="${servePath}${article.articlePermalink}">
-                    ${article.articleTitle}
-                </a>
-                <#if article.articlePutTop>
-                <sup>
-                    ${topArticleLabel}
-                </sup>
-                </#if>
-                <#if article.hasUpdated>
-                <sup>
-                    ${updatedLabel}
-                </sup>
-                </#if>
-            </h1>
+        <article class="post-item">
+            <header>
+                <h2>
+                    <a class="post-title-link" rel="bookmark" href="${servePath}${article.articlePermalink}">
+                        ${article.articleTitle}
+                    </a>
+                    <#if article.articlePutTop>
+                        <sup>
+                            ${topArticleLabel}
+                        </sup>
+                    </#if>
+                    <#if article.hasUpdated>
+                        <sup>
+                            <a class="post__sup" href="${servePath}${article.articlePermalink}">
+                                ${updatedLabel}
+                            </a>
+                        </sup>
+                    </#if>
+                </h2>
 
-            <div class="post-meta">
+                <div class="post-meta">
                 <span>
-                    ${postTimeLabel}
+                    <#if article.articleCreateDate?datetime != article.articleUpdateDate?datetime>
+                        ${updateTimeLabel}
+                    <#else>
+                        ${postTimeLabel}
+                    </#if>
                     <time>
-                        ${article.articleCreateDate?string("yyyy-MM-dd")}
+                        ${article.articleUpdateDate?string("yyyy-MM-dd")}
                     </time>
                 </span>
-                <span>
+                    <span>
                     &nbsp; | &nbsp;
                     <a href="${servePath}${article.articlePermalink}#comments">
                         ${article.articleCommentCount} ${cmtLabel}</a>
                 </span>
-                &nbsp; | &nbsp;${viewsLabel} ${article.articleViewCount}°C
+                    &nbsp; | &nbsp;${viewsLabel} ${article.articleViewCount}°C
+                </div>
+            </header>
+            <div class="vditor-reset">
+                ${article.articleAbstract}
             </div>
-        </header>
-        <div class="article-body">
-            ${article.articleAbstract}
-        </div>
-        <div class="post-more-link">
-            <a href="${servePath}${article.articlePermalink}#more" rel="contents">
-                ${readLabel} &raquo;
-            </a>
-        </div>
-    </article>
+            <div class="post-more-link">
+                <a href="${servePath}${article.articlePermalink}#more" rel="contents">
+                    ${readLabel} &raquo;
+                </a>
+            </div>
+        </article>
     </#list>
 </section>
 
 <#if 0 != paginationPageCount>
-<nav class="pagination">
-    <#if 1 != paginationPageNums?first>
-    <a href="${servePath}${path}?p=${paginationPreviousPageNum}" class="extend next"><<</a>
-    <a class="page-number" href="${servePath}${path}">1</a> ...
-    </#if>
-    <#list paginationPageNums as paginationPageNum>
-    <#if paginationPageNum == paginationCurrentPageNum>
-    <span class="page-number current">${paginationPageNum}</span>
-    <#else>
-    <a class="page-number" href="${servePath}${path}?p=${paginationPageNum}">${paginationPageNum}</a>
-    </#if>
-    </#list>
-    <#if paginationPageNums?last != paginationPageCount> ...
-    <a href="${servePath}${path}?p=${paginationPageCount}" class="page-number">${paginationPageCount}</a>
-    <a href="${servePath}${path}?p=${paginationNextPageNum}" class="extend next">>></a>
-    </#if>
-</nav>
+    <nav class="pagination">
+        <#if 1 != paginationPageNums?first>
+            <a href="${servePath}${path}?p=${paginationPreviousPageNum}" class="extend next"><<</a>
+            <a class="page-number" href="${servePath}${path}">1</a> ...
+        </#if>
+        <#list paginationPageNums as paginationPageNum>
+            <#if paginationPageNum == paginationCurrentPageNum>
+                <span class="page-number current">${paginationPageNum}</span>
+            <#else>
+                <a class="page-number" href="${servePath}${path}?p=${paginationPageNum}">${paginationPageNum}</a>
+            </#if>
+        </#list>
+        <#if paginationPageNums?last != paginationPageCount> ...
+            <a href="${servePath}${path}?p=${paginationPageCount}" class="page-number">${paginationPageCount}</a>
+            <a href="${servePath}${path}?p=${paginationNextPageNum}" class="extend next">>></a>
+        </#if>
+    </nav>
 </#if>

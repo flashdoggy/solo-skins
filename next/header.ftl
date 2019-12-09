@@ -1,7 +1,7 @@
 <#--
 
     Solo - A small and beautiful blogging system written in Java.
-    Copyright (c) 2010-2019, b3log.org & hacpai.com
+    Copyright (c) 2010-present, b3log.org
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -38,32 +38,11 @@
             <ul class="menu">
                 <#list pageNavigations as page>
                 <li class="menu-item">
-                    <#if page.pageIcon != ''><img class="page-icon" src="${page.pageIcon}"></#if>
                     <a href="${page.pagePermalink}" target="${page.pageOpenTarget}" rel="section">
                         ${page.pageTitle}
                     </a>
                 </li>
-                </#list>  
-                <li class="menu-item">
-                    <a href="${servePath}/dynamic.html" rel="section">
-                        ${dynamicLabel}
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="${servePath}/tags.html" rel="section">
-                        ${allTagsLabel}
-                    </a>  
-                </li>
-                <li class="menu-item">
-                    <a href="${servePath}/archives.html">
-                        ${archiveLabel}
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a rel="alternate" href="${servePath}/rss.xml" rel="section">
-                        RSS
-                    </a>
-                </li>
+                </#list>
             </ul>
 
             <div class="site-search">

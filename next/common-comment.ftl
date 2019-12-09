@@ -1,7 +1,7 @@
 <#--
 
     Solo - A small and beautiful blogging system written in Java.
-    Copyright (c) 2010-2019, b3log.org & hacpai.com
+    Copyright (c) 2010-present, b3log.org
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by
@@ -37,10 +37,10 @@
                         <time>${comment.commentDate2?string("yyyy-MM-dd HH:mm")}</time>
                 </span>
         <#if article.commentable>
-            <a class="fn-right" href="javascript:replyTo('${comment.oId}')">${replyLabel}</a>
+            <a class="fn-right" href="javascript:page.toggleEditor('${comment.oId}', '${comment.commentName}')">${replyLabel}</a>
         </#if>
         </div>
-        <div class="comment-content post-body article-body">
+        <div class="comment-content post-body vditor-reset">
         ${comment.commentContent}
         </div>
     </div>
