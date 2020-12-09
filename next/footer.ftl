@@ -38,6 +38,9 @@
                 <sup>[<a href="https://github.com/iissnan/hexo-theme-next" target="_blank">ref</a>]</sup>
                 by <a href="http://vanessa.b3log.org" target="_blank">Vanessa</a>
             </div>
+            <div>
+<#--                Here is going to be a checkware information about website warning-->
+            </div>
         </div>
     </div>
 </footer>
