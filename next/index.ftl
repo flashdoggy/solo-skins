@@ -19,8 +19,7 @@
 -->
 <#include "../../common-template/macro-common_head.ftl">
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="javascript">
     <@head title="${blogTitle}">
         <#if metaKeywords??>
             <meta name="keywords" content="${metaKeywords}"/>
@@ -29,18 +28,17 @@
             <meta name="description" content="${metaDescription}"/>
         </#if>
     </@head>
-</head>
 
-<body>
-<#include "header.ftl">
-<main class="main">
-    <div class="wrapper">
-        <div class="content">
-        <#include "article-list.ftl">
+    <body>
+    <#include "header.ftl">
+    <main class="main">
+        <div class="wrapper">
+            <div class="content">
+            <#include "article-list.ftl">
+            </div>
+        <#include "side.ftl">
         </div>
-    <#include "side.ftl">
-    </div>
-</main>
-<#include "footer.ftl">
-</body>
+    </main>
+    <#include "footer.ftl">
+    </body>
 </html>
